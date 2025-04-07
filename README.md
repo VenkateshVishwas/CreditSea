@@ -1,46 +1,42 @@
 # CreditSea Backend
 
-A Node.js + TypeScript backend for managing loan applications with role-based access (User, Verifier, Admin). Built using Express.js, Sequelize ORM, and PostgreSQL.
+A Node.js + TypeScript backend for managing loan applications with role-based access control (User, Verifier, Admin). Built using Express.js, Sequelize ORM, and PostgreSQL.
 
 ## 🚀 Features
 
-- JWT-based authentication with cookies
-- Role-based access control (RBAC)
-- Secure PostgreSQL connection (Aiven-compatible)
-- Sequelize ORM with migrations and models
-- Loan application submission, verification, approval, and rejection
+- JWT-based authentication with cookies  
+- Role-based access control (RBAC)  
+- Secure PostgreSQL connection (Aiven-compatible)  
+- Sequelize ORM with migrations and models  
+- Loan application submission, verification, approval, and rejection  
 
 ## 🛠 Tech Stack
 
-- Node.js
-- TypeScript
-- Express.js
-- PostgreSQL (hosted on Aiven)
-- Sequelize ORM
-- Dotenv
-- Bcrypt
-- JSON Web Tokens (JWT)
+- Node.js  
+- TypeScript  
+- Express.js  
+- PostgreSQL (hosted on Aiven)  
+- Sequelize ORM  
+- dotenv  
+- bcrypt  
+- JSON Web Tokens (JWT)  
 
 ## 📁 Project Structure
 
+```
 src/
-│
+├── config/
 ├── controllers/
 ├── middleware/
 ├── models/
 ├── routes/
 ├── utils/
-├── config/
 └── server.ts
-
-
-makefile
-Copy
-Edit
+```
 
 ## 🔐 Environment Variables
 
-Create a `.env` file at the root with:
+Create a `.env` file in the root directory with the following content:
 
 ```env
 DB_NAME=loan_db
@@ -49,48 +45,61 @@ DB_PASSWORD=your_password
 DB_HOST=your_host_url
 DB_PORT=14720
 JWT_SECRET=your_jwt_secret
-🧪 Setup Instructions
-Clone the repository:
+```
 
-bash
-Copy
-Edit
+## 🧪 Setup Instructions
+
+1. **Clone the repository:**
+
+```bash
 git clone https://github.com/your-username/CreditSea_Backend.git
 cd CreditSea_Backend
-Install dependencies:
+```
 
-bash
-Copy
-Edit
+2. **Install dependencies:**
+
+```bash
 npm install
-Configure environment variables in .env as shown above.
+```
 
-Run the development server:
+3. **Configure the environment variables** in a `.env` file as shown above.
 
-bash
-Copy
-Edit
+4. **Run the development server:**
+
+```bash
 npm run dev
-🗄 Database
+```
+
+## 🗄 Database
+
 To import data from a SQL dump:
 
-bash
-Copy
-Edit
+```bash
 psql "postgres://avnadmin:your_password@your_host:14720/loan_db?sslmode=require" --file=cleaned-data.sql
-Make sure the tables are created before running the SQL inserts.
+```
 
-📡 API Routes
-🧑 Public Routes
-Method	Endpoint	Description
-POST	/register	Register a user
-POST	/login	Log in a user
-GET	/logout	Log out the session
-👤 User Routes
-Method	Endpoint	Description
-GET	/user	Get user dashboard
-POST	/user/form	Submit loan application form
-✅ Verifier Routes
-Method	Endpoint	Description
-GET	/verifier	Get verifier dashboard
-PUT	/verifier/update-status	Update loan status
+> Ensure that the database schema (tables) exists before running the SQL inserts.
+
+## 📡 API Routes
+
+### 🧑 Public Routes
+
+| Method | Endpoint   | Description         |
+|--------|------------|---------------------|
+| POST   | /register  | Register a new user |
+| POST   | /login     | Log in a user       |
+| GET    | /logout    | Log out the session |
+
+### 👤 User Routes
+
+| Method | Endpoint     | Description                    |
+|--------|--------------|--------------------------------|
+| GET    | /user        | Get user dashboard             |
+| POST   | /user/form   | Submit loan application form   |
+
+### ✅ Verifier Routes
+
+| Method | Endpoint                | Description                     |
+|--------|-------------------------|---------------------------------|
+| GET    | /verifier               | Get verifier dashboard          |
+| PUT    | /verifier/update-status | Update loan application status  |

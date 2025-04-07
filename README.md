@@ -92,14 +92,24 @@ psql "postgres://avnadmin:your_password@your_host:14720/loan_db?sslmode=require"
 
 ### 👤 User Routes
 
-| Method | Endpoint     | Description                    |
-|--------|--------------|--------------------------------|
-| GET    | /user        | Get user dashboard             |
-| POST   | /user/form   | Submit loan application form   |
+| Method | Endpoint     | Description                  |
+|--------|--------------|------------------------------|
+| GET    | /user        | Get user dashboard           |
+| POST   | /user/form   | Submit loan application      |
 
 ### ✅ Verifier Routes
 
 | Method | Endpoint                | Description                     |
 |--------|-------------------------|---------------------------------|
 | GET    | /verifier               | Get verifier dashboard          |
-| PUT    | /verifier/update-status | Update loan application status  |
+| PUT    | /verifier/update-status | Approve/Reject loan application |
+
+> 🔸 Note: Admins can also use `/verifier/update-status` to approve or reject applications.
+
+### 🛡️ Admin Routes
+
+| Method | Endpoint            | Description           |
+|--------|---------------------|-----------------------|
+| GET    | /admin              | Get admin dashboard   |
+| GET    | /admin/users        | View all users        |
+| PUT    | /admin/users/update | Update a user's role  |

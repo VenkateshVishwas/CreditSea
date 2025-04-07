@@ -23,7 +23,16 @@ A Node.js + TypeScript backend for managing loan applications with role-based ac
 
 ## 📁 Project Structure
 
-CreditSea_Backend/ ├── src/ │ ├── config/ # Sequelize setup │ ├── controllers/ # Route handlers │ ├── middleware/ # Auth, role guards │ ├── models/ # Sequelize models │ ├── routes/ # API endpoints │ ├── types/ # Custom TypeScript types │ └── index.ts # Entry point ├── .env ├── package.json └── tsconfig.json
+src/
+│
+├── controllers/
+├── middleware/
+├── models/
+├── routes/
+├── utils/
+├── config/
+└── server.ts
+
 
 makefile
 Copy
@@ -71,19 +80,17 @@ Edit
 psql "postgres://avnadmin:your_password@your_host:14720/loan_db?sslmode=require" --file=cleaned-data.sql
 Make sure the tables are created before running the SQL inserts.
 
-🧑‍💻 API Overview
-POST /api/register – Register new users
-
-POST /api/login – Login and receive cookie JWT
-
-GET /api/me – Get current logged-in user
-
-POST /api/loan/apply – Apply for a loan (User)
-
-GET /api/loan/all – View all loan applications (Admin/Verifier)
-
-POST /api/loan/:id/verify – Verify a loan (Verifier)
-
-POST /api/loan/:id/approve – Approve a loan (Admin)
-
-POST /api/loan/:id/reject – Reject a loan (Admin)
+📡 API Routes
+🧑 Public Routes
+Method	Endpoint	Description
+POST	/register	Register a user
+POST	/login	Log in a user
+GET	/logout	Log out the session
+👤 User Routes
+Method	Endpoint	Description
+GET	/user	Get user dashboard
+POST	/user/form	Submit loan application form
+✅ Verifier Routes
+Method	Endpoint	Description
+GET	/verifier	Get verifier dashboard
+PUT	/verifier/update-status	Update loan status

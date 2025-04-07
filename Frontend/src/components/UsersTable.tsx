@@ -39,9 +39,9 @@ function AdminUsersDashboard() {
 
     useEffect(() => {
         const handleData = async () => {
-            const response = await axios.get<AdminUserResponse>("http://localhost:3000/api/dashboard/admin/users", { withCredentials: true });
+            const response = await axios.get<AdminUserResponse>("https://creditsea-backend-ymi7.onrender.com/api/dashboard/admin/users", { withCredentials: true });
             const resData = response.data; // Already the correct shape
-              console.log(resData); // ✅ Should work now
+            console.log(resData); // ✅ Should work now
 
             if (resData !== undefined) {
                 const result: UserInterfaceVerifier[] = resData.map((i) => ({

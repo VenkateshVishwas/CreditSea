@@ -41,13 +41,13 @@ function VerifierDashboard() {
 
     useEffect(() => {
         const handleData = async () => {
-            const response = await axios.get<VerifierDashboardResponse>("http://localhost:3000/api/dashboard/verifier", { withCredentials: true });
+            const response = await axios.get<VerifierDashboardResponse>("https://creditsea-backend-ymi7.onrender.com/api/dashboard/verifier", { withCredentials: true });
             const resData = response.data; // Already the correct shape
-              console.log(resData.pendingApplications); // ✅ Should work now
+            console.log(resData.pendingApplications); // ✅ Should work now
 
             if (resData.pendingApplications !== undefined) {
                 const result: LoanDetailsVerifier[] = resData.pendingApplications.map((i) => ({
-                    "id":i.id,
+                    "id": i.id,
                     "User Recent Activity": i.reason,
                     "Customer name": i.name,
                     "Date": new Date(i.createdAt).toLocaleDateString(), // optional formatting

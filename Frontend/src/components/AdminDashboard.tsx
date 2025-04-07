@@ -46,16 +46,16 @@ function AdminDashboard() {
     useEffect(() => {
         const handleData = async () => {
             const response = await axios.get<AdminDashboardResponse>(
-                "http://localhost:3000/api/dashboard/admin",
+                "https://creditsea-backend-ymi7.onrender.com/api/dashboard/admin",
                 { withCredentials: true }
             );
 
             const resData = response.data; // Already the correct shape
-              console.log(resData.applications); // ✅ Should work now
+            console.log(resData.applications); // ✅ Should work now
 
             if (resData.applications !== undefined) {
                 const result: LoanDetailsAdmin[] = resData.applications.map((i) => ({
-                    "id":i.id,
+                    "id": i.id,
                     "User Details": i.reason,
                     "Customer name": i.name,
                     "Date": new Date(i.createdAt).toLocaleDateString(), // optional formatting
